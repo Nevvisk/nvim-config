@@ -88,9 +88,14 @@ require("lazy").setup({
 
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
-
-	require("plugins/treesitter"),
-
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			require("treesitter-context").setup({
+				enable = false, -- This disables the treesitter context
+			})
+		end,
+	},
 	{
 		"kylechui/nvim-surround",
 		config = function()
@@ -434,7 +439,25 @@ require("lazy").setup({
 		},
 		build = ":TSUpdate",
 	},
-	require("plugins/nvimtree"),
+	{
+		"kyazdani42/nvim-tree.lua",
+		config = function()
+			vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>")
+			require("nvim-tree").setup({
+				reload_on_bufenter = true,
+				update_focused_file = {
+					enable = true,
+					update_root = false,
+					ignore_list = {},
+				},
+				actions = {
+					open_file = {
+						quit_on_open = true,
+					},
+				},
+			})
+		end,
+	},
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
