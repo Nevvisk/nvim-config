@@ -34,8 +34,6 @@ require("lazy").setup("plugins", {
 	"tpope/vim-sleuth",
 	{ "numToStr/Comment.nvim", opts = {} },
 }, {})
-local masonconfig = require("config.masonconfig")
-masonconfig.setup()
-local general = require("config.general")
-general.setup()
+require("config.masonconfig")
+require("config.general")
 require("vimopts")
