@@ -6,7 +6,8 @@ vim.cmd("command! TypeThis lua require'typer'.typeItOut()")
 
 -- Scroll down/up by half a page and center the cursor
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "half page down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
+vim.keymap.set("n", "G", "Gzz", { desc = "reset middle page when going to end." })
 
 -- Quickly insert an empty new line without entering insert mode
 vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "half page down" })
