@@ -56,24 +56,24 @@ return {
 			)
 		end
 
-		-- Modified Lua formatter configuration
-		if command_exists("stylua") then
-			table.insert(
-				sources,
-				null_ls.builtins.formatting.stylua.with({
-					filetypes = { "lua" },
-					extra_args = {
-						"--quote-style",
-						"AutoPreferDouble",
-						"--indent-type",
-						"Spaces",
-						"--indent-width",
-						"2",
-					},
-				})
-			)
-		end
-
+		-- -- Modified Lua formatter configuration
+		-- if command_exists("stylua") then
+		-- 	table.insert(
+		-- 		sources,
+		-- 		null_ls.builtins.formatting.stylua.with({
+		-- 			filetypes = { "lua" },
+		-- 			extra_args = {
+		-- 				"--quote-style",
+		-- 				"AutoPreferDouble",
+		-- 				"--indent-type",
+		-- 				"Spaces",
+		-- 				"--indent-width",
+		-- 				"2",
+		-- 			},
+		-- 		})
+		-- 	)
+		-- end
+		--
 		-- Setup null-ls with on_attach
 		null_ls.setup({
 			sources = sources,

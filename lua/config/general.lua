@@ -1,8 +1,19 @@
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
+  pattern = "*",
+  callback = function(ctx)
+    local conform = require("conform")
+
+    -- Skip null-ls if it doesn’t expose the right API
+    conform.format({
+      -- only call formatters for clients that support formatting safely
+      client_filter = function(client)
+        if client.name == "null-ls" then
+          return vim.tbl_isempty(client.server_capabilities.documentFormattingProvider and {})
+        end
+        return true
+      end,
+    })
+  end,
 })
 vim.api.nvim_set_keymap("n", "<leader>i", ":PyrightOrganizeImports <CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(

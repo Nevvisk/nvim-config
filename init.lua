@@ -38,3 +38,4 @@ require("lazy").setup("plugins", {
 require("config.masonconfig")
 require("config.general")
 require("vimopts")
+require("pywal")
